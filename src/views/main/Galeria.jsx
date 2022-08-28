@@ -55,7 +55,7 @@ export default function Galeria() {
   ];
 
   return (
-    <div className="flex group py-5  duration-200">
+    <div className="flex flex-wrap group md:py-5 w-full duration-200">
       <Columnas>
         {arrayImagenes &&
           arrayImagenes
