@@ -1,9 +1,21 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import Columnas from "../../component/Columnas";
 import ContenedoresImagen from "../../component/ContenedoresImagen";
+import ContenedoresVides from "../../component/ContenedoresVides";
+import { fetchData } from "../../hook/useFetch";
+import useItems from "../../hook/useItems";
 
 export default function Galeria() {
+  const { data: data, error, isLoading } = useQuery(["images"], fetchData);
+
+  const [items] = useItems(data);
+
   const arrayImagenes = [
+    {
+      linkDescarga: "https://unsplash.com/@jeka_fe",
+      imagen: "../../../../ServerGaleria360/public/video-0 (1).mp4",
+    },
     {
       linkDescarga: "https://unsplash.com/@jeka_fe",
       imagen: "https://source.unsplash.com/_cvwXhGqG-o/300x300",
@@ -41,69 +53,25 @@ export default function Galeria() {
       imagen: "https://source.unsplash.com/2JH8d3ChNec/300x300",
     },
     {
-        linkDescarga: "https://unsplash.com/@frxgui",
-        imagen: "https://source.unsplash.com/FQhLLehm4dk/300x300",
-      },
-      {
-        linkDescarga:"https://unsplash.com/@majestical_jasmin",
-        imagen:"https://source.unsplash.com/OQd9zONSx7s/300x300",
-      },
-      {
-        linkDescarga: "https://unsplash.com/@dimadallacqua",
-        imagen: "https://source.unsplash.com/XZkEhowjx8k/300x500",
-      },
+      linkDescarga: "https://unsplash.com/@frxgui",
+      imagen: "https://source.unsplash.com/FQhLLehm4dk/300x300",
+    },
+    {
+      linkDescarga: "https://unsplash.com/@majestical_jasmin",
+      imagen: "https://source.unsplash.com/OQd9zONSx7s/300x300",
+    },
+    {
+      linkDescarga: "https://unsplash.com/@dimadallacqua",
+      imagen: "https://source.unsplash.com/XZkEhowjx8k/300x500",
+    },
   ];
 
   return (
     <div className="flex flex-wrap group md:py-5 w-full duration-200">
       <Columnas>
-        {arrayImagenes &&
-          arrayImagenes
-            .slice(0, 3)
-            .map((element, i) => (
-              <ContenedoresImagen
-                key={i}
-                linkDescarga={element.linkDescarga}
-                imagen={element.imagen}
-              />
-            ))}
-      </Columnas>
-
-      <Columnas>
-        {arrayImagenes &&
-          arrayImagenes
-            .slice(3, 6)
-            .map((element, i) => (
-              <ContenedoresImagen
-                key={i}
-                linkDescarga={element.linkDescarga}
-                imagen={element.imagen}
-              />
-            ))}
-      </Columnas>
-      <Columnas>
-        {arrayImagenes &&
-          arrayImagenes
-            .slice(6, 9)
-            .map((element, i) => (
-              <ContenedoresImagen
-                key={i}
-                linkDescarga={element.linkDescarga}
-                imagen={element.imagen}
-              />
-            ))}
-      </Columnas>
-      <Columnas>
-      {arrayImagenes &&
-          arrayImagenes
-            .slice(9, 12)
-            .map((element, i) => (
-              <ContenedoresImagen
-                key={i}
-                linkDescarga={element.linkDescarga}
-                imagen={element.imagen}
-              />
-            ))}
+        {items?.map((item, i) => (
+          <ContenedoresVides src={item.src} key={i} />
+        ))}
       </Columnas>
     </div>
   );
