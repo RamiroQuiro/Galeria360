@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default function () {
   return (
@@ -9,7 +10,12 @@ export default function () {
         </div>
         <div className='flex md:justify-end justify-center items-center md:w-2/3'>
             <ul className="flex justify-between md:w-1/2 gap-8 items-center text-sm font-medium">
-                <li className='cursor-pointer'>home</li>
+                <NavLink
+                to={'/config'} 
+                className=""
+                >
+                    Configuracion
+                </NavLink>
                 <li className='cursor-pointer'>galeria</li>
                 <li className='cursor-pointer'>contacto</li>
             </ul>

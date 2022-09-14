@@ -1,25 +1,40 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef,useState } from "react";
+import { fetcQR } from "../hook/useFetch";
 
 export default function ContenedoresVides({ src, current }) {
   const videoRef = useRef(null);
-
+  const [codeQR,setCodeQR]=useState (null)
   const hover = () => {
     videoRef.current.addEventListener("mouseenter", () => {
-      videoRef.current.play();
-    });
-    videoRef.current.addEventListener("mouseout", () => {
-      videoRef.current.pause();
-    });
+       videoRef.current.play();
+     });
+     videoRef.current.addEventListener("mouseout", () => {
+       videoRef.current.pause();
+     });
   };
+  const handleQR=()=>{
+  fetcQR(JSON.stringify({src:`http://localhost:4000/${src}`})).then((response)=>setCodeQR(response))
+  }
 
-  useEffect(() => {
-    if (videoRef && videoRef.current) {
-      hover();
-    }
-    return () => hover();
-  }, []);
+   useEffect(() => {
+     if (videoRef && videoRef.current) {
+       hover();
+     }
+     if(!src){
+       return
+     }
+     handleQR()
+   
+   }, [src]);
+
+
+
+  
+
   return (
-    <div className=" m-[2px] w-3/12 flex-auto z-20 group relative">
+    <div className=" m-[2px] w-3/12 relative flex-auto z-20 group relative">
+         {/* <button onClick={handleQR}>codQR</button> */}
+         <img src={codeQR} alt="" className="absolute z-50  right-5 top-10 w-24" />
       <video
         ref={videoRef}
         muted
@@ -28,6 +43,7 @@ export default function ContenedoresVides({ src, current }) {
       >
         <source src={`http://localhost:4000/${src}`} type="video/mp4" />
       </video>
+   
       <a href={`http://localhost:4000/${src}`} download>
         Descargar
       </a>

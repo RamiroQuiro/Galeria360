@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import Columnas from "../../component/Columnas";
 import ContenedoresImagen from "../../component/ContenedoresImagen";
 import ContenedoresVides from "../../component/ContenedoresVides";
-import { fetchData } from "../../hook/useFetch";
+import { fetchData, fetcQR } from "../../hook/useFetch";
 import useItems from "../../hook/useItems";
 
 export default function Galeria() {
@@ -66,6 +66,7 @@ export default function Galeria() {
     },
   ];
 
+
   return (
     <div className="flex flex-wrap group md:py-5 w-full duration-200">
       <Columnas>
@@ -73,6 +74,7 @@ export default function Galeria() {
           <ContenedoresVides src={item.src} key={i} />
         ))}
       </Columnas>
+    
     </div>
   );
 }
