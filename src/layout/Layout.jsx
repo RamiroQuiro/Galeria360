@@ -22,7 +22,7 @@ const data=() => {
   setImgEvent(JSON.parse(imgEvent))
 }
 data()
-},[event])
+},[])
 
   return (
     <div className='w-full  relative mx-auto text-neutral-700'>

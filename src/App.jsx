@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/config' element={<Config/>}/>
+        <Route path='/' element={<Config/>}/>
         <Route path='/galeria' element={<Layout/>}/>
       </Routes>
     </BrowserRouter>

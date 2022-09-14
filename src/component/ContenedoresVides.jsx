@@ -32,20 +32,18 @@ export default function ContenedoresVides({ src, current }) {
   
 
   return (
-    <div className=" m-[2px] w-3/12 relative flex-auto z-20 group relative">
+    <div className=" m-[2px] w-3/12 relative flex-auto z-20 group overflow-hidden">
          {/* <button onClick={handleQR}>codQR</button> */}
          <img src={codeQR} alt="" className="absolute z-50  right-5 top-10 w-24" />
+         <a href={`http://localhost:4000/${src}`} download={true} target="_blank">
       <video
         ref={videoRef}
         muted
         loop
-        className="hover:scale-125 hover:-translate-y-2 hover:z-40 duration-500"
+        className="hover:scale-110 hover:-translate-y-2 hover:z-40 duration-500"
       >
         <source src={`http://localhost:4000/${src}`} type="video/mp4" />
       </video>
-   
-      <a href={`http://localhost:4000/${src}`} download>
-        Descargar
       </a>
     </div>
   );
