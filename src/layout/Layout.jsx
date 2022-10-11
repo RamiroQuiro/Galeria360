@@ -1,39 +1,36 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
-import Footer from '../views/footer/Footer'
-import Header from '../views/header/Header'
-import Headerr from '../views/header/Headerr'
-import Main from '../views/main/Main'
-
+import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import { datos,  fetcConfig, fetchData } from "../hook/useFetch";
+import useItems from "../hook/useItems";
+import { Outlet } from "react-router-dom";
 export default function Layout() {
+  const { data: data, error, isLoading } = useQuery(["images"], fetchData);
+  const { data: config } = useQuery(["config"], fetcConfig);
+  const [items] = useItems(data);
+  const [url, setUrl] = useState({})
 
+  const [event, setEvent] = useState(null);
 
-
-const [imgEvent,setImgEvent]=useState(null)
-const [event,setEvent]=useState(null)
-
-useEffect(()=>{
-  const datosLocales=localStorage.getItem('config')
-  const imgEvent=localStorage.getItem('imgEvent')
-  if(!datosLocales){return}
-
-const data=() => {
-  setEvent(JSON.parse(datosLocales))
-  setImgEvent(JSON.parse(imgEvent))
-}
-data()
-},[])
+  useEffect(() => {
+    const url=async()=>{
+      setUrl(datos) 
+    }
+    url()
+    const traerDatos = () => {
+      setEvent(config);
+    };
+    traerDatos();
+  }, [config]);
 
   return (
-    <div className='w-full  relative mx-auto text-neutral-700'>
-         {/* <div className="  absolute  left-0  h-[75vh] md:w-2/3"></div> */}
-       <Headerr 
-       imgEvent={imgEvent}
-       event={event}/>
-       <Main 
-       event={event}/>
-       <div className=" bg-wave2  h-full "></div>
-       <Footer/>
+    <div
+      className={`${
+        config?.dark ? "bg-[#1C2128]" : "bg-sky-100 "
+      } w-full relative mx-auto text-neutral-700 flex flex-col items-center justify-center`}
+    >
+     <Outlet 
+     context={[event,items,url]}
+     />
     </div>
-    )
+  );
 }

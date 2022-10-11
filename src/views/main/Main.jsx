@@ -1,10 +1,11 @@
 import React from 'react'
 import Galeria from './Galeria'
 
-export default function Main({event}) {
+export default function Main({items,url}) {
+  
   return (
-    <div className="w-full pt- my-20 mx-auto md:px-16">
-        <Galeria/>
-    </div>
+    <main className="md:w-11/12 mx-auto ">
+        <Galeria items={items} url={url}/>
+    </main>
   )
 }

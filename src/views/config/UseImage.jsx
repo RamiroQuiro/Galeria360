@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { fetcImg } from "../../hook/useFetch";
 
-export default function UseImage({}) {
+export default function UseImage({config,setConfig,url}) {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,13 +30,14 @@ export default function UseImage({}) {
     formData.append('imgEvent',file)
     fetcImg(formData)
       .then((response) => {
-        console.log(response)
+        setConfig({...config,imgEvent:response})
         localStorage.setItem("imgEvent",JSON.stringify(response));
         toast.success('Imagen Subida Correctamente')
         setIsLoading(false)
       })
       .catch((err) => {
         console.log(err)
+        toast.error('Hubo un error, reintente nuevamente')
       setIsLoading(false)
     })
   };
@@ -61,8 +62,15 @@ export default function UseImage({}) {
           />
         </label>
       </div>
-      {!preview ? (
-        <div className="w-40 h-40 border-2 rounded-full bg-gray-500"></div>
+      {
+      !preview ? (
+        <div className="w-40 h-40 border-2 rounded-full overflow-hidden bg-gray-500">
+         <img
+             src={`http://${url?.hostname?url?.hostname:url?.IPv4}:4000/upload/${config?.imgEvent}`}
+             alt="Perfil "
+             className=" object-cover w-full h-auto obect-center"
+           />
+         </div>
       ) : (
         <div className="w-40 h-40 border-2 rounded-full overflow-hidden bg-gray-500">
           <img
