@@ -13,6 +13,7 @@ export default function ContenedoresVides({
   widthVideo,
   url,
   imgEvent,
+  imgEmpresa
 }) {
   const [posicionY, setPosicionY] = useState(0);
   const [isPressDownClick, setIsPressDownClick] = useState(false);
@@ -94,7 +95,7 @@ export default function ContenedoresVides({
     >
       {!slider ? null : (
         <SvgGroup
-          imgEvent={`http://${url?.IPv4}:4000/upload/${imgEvent}`}
+          imgEvent={`http://${url?.IPv4}:4000/upload/${imgEmpresa}`}
           url={`//${url?.IPv4}:4000/${src}`}
           handleMutedVideo={handleMutedVideo}
           muted={mutedVideo}

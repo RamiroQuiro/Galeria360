@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { datos, fetcConfig, fetcTxt } from "../../hook/useFetch";
 import toast, { Toaster } from "react-hot-toast";
 import ModalLoading from "../../component/ModalLoading";
 import Footer from "../footer/Footer";
 import ConfigConfiguracionGaleria from "./ConfigConfiguracionGaleria";
 import ConfigConfiguracionEmpresa from "./ConfigConfiguracionEmpresa";
+import NavBarConfigracion from "./NavBarConfigracion";
 
 export default function Config() {
   const navigate = useNavigate();
@@ -67,31 +68,26 @@ fetcTxt(JSON.stringify(config)).then((data)=>{
       .catch((err) => console.log(err));
   };
 
+
+  const contextOutlet={
+    handleChange:handleChange,
+    handlePaletaColors:handlePaletaColors,
+    handleCkeck:handleCkeck,
+    datos:datos,
+    config:config,
+   guardarDatosEmpresa,
+    setConfig:setConfig, 
+    guardarConfig,
+  }
   return (
-    <div className="w-full overflow-x-hidden pt-5 text-gray-200 mx-auto bg-[#22272E]">
+    <div className="w-full overflow-x-hidden pt-5 text-gray-200 mx-auto bg-neutral-900">
       {!isLoading ? null : <ModalLoading />}
 
       <Toaster />
-      <ConfigConfiguracionEmpresa 
-         handleChange={handleChange}
-         handlePaletaColors={handlePaletaColors}
-         handleCkeck={handleCkeck}
-         datos={datos}
-         config={config}
-         guardarConfig={guardarDatosEmpresa}
-         setConfig={setConfig}
-         key="1"
-      />
-      <ConfigConfiguracionGaleria
-        handleChange={handleChange}
-        handlePaletaColors={handlePaletaColors}
-        handleCkeck={handleCkeck}
-        datos={datos}
-        config={config}
-        guardarConfig={guardarConfig}
-        setConfig={setConfig}
-        key="2"
-      />
+      <NavBarConfigracion/>
+
+      <Outlet context={contextOutlet}/>
+     
       <Footer />
     </div>
   );

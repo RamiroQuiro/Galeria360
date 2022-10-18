@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { fetcImg } from "../../hook/useFetch";
 
-export default function UseImage({config,setConfig,url}) {
+export default function UseImage({config,setConfig,url,typeImg}) {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,8 +30,8 @@ export default function UseImage({config,setConfig,url}) {
     formData.append('imgEvent',file)
     fetcImg(formData)
       .then((response) => {
-        setConfig({...config,imgEvent:response})
-        localStorage.setItem("imgEvent",JSON.stringify(response));
+        setConfig({...config,[typeImg]:response})
+        localStorage.setItem(typeImg,JSON.stringify(response));
         toast.success('Imagen Subida Correctamente')
         setIsLoading(false)
       })
@@ -45,7 +45,7 @@ export default function UseImage({config,setConfig,url}) {
   return (
     <form
       onSubmit={submitFile}
-      className="w-8/12 mx-auto flex items-center my-16 py-8 rounded-lg px-10 bg-gray-100/70 justify-around"
+      className="w-8/12 mx-auto flex items-center my-16 py-8 rounded-lg px-10 bg-neutral-700 justify-around"
     >
       <div>
         <label
@@ -56,7 +56,7 @@ export default function UseImage({config,setConfig,url}) {
           <input
             onChange={handleFile}
             type="file"
-            name="imgEvent"
+            name={typeImg}
             id="imgEvent"
             className="hidden"
           />
@@ -66,7 +66,7 @@ export default function UseImage({config,setConfig,url}) {
       !preview ? (
         <div className="w-40 h-40 border-2 rounded-full overflow-hidden bg-gray-500">
          <img
-             src={`http://${url?.hostname?url?.hostname:url?.IPv4}:4000/upload/${config?.imgEvent}`}
+             src={`http://${url?.IPv4}:4000/upload/${config?.[typeImg]}`}
              alt="Perfil "
              className=" object-cover w-full h-auto obect-center"
            />
@@ -80,9 +80,9 @@ export default function UseImage({config,setConfig,url}) {
           />
         </div>
       )}
-      <button type="submit"  disabled={isLoading} className="disabled:bg-gray-200 inline-block px-5 py-3 text-sm font-medium text-white bg-blue-500 hover:bg-blue-500/80 border-b-2 border-x-2 rounded-lg"
+      <button type="submit"  disabled={isLoading}   className="inline-block  px-10 py-3 text-sm  font-medium text-white bg-blue-800 rounded my-5 border-l-2 hover:bg-blue-500/80 duration-300 "
             >
-        subir
+        Subir
       </button>
     </form>
   );

@@ -30,6 +30,7 @@ export default function SliderPantall() {
             src={item.src}
             key={i}
             imgEvent={event?.imgEvent}
+            imgEmpresa={event?.imgEmpresa}
             slider={true}
             current={index == i}
             setIndex={setIndex}

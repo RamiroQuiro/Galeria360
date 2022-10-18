@@ -1,27 +1,25 @@
 import React from 'react'
+import { useOutletContext } from 'react-router-dom';
 import H1 from '../../component/H1';
 import UseImage from './UseImage';
 
-export default function ConfigConfiguracionGaleria({handleChange,handleCkeck,handlePaletaColors,guardarConfig,config,setConfig,datos}) {
+export default function ConfigConfiguracionGaleria() {
 
     
-    
-
+    const {handleChange,handleCkeck,handlePaletaColors,guardarConfig,config,setConfig,datos}=useOutletContext()
 
   return (
-    <div className="border-t-2 pt-10 text-neutral-700">
+    <div className="py-16">
   
     <H1  className="text-gray-200">Configuración de la Galeria</H1>
-    <div className="px-4  mx-auto w-2/3 sm:px-2 lg:px-8">
-      <UseImage config={config} url={datos} setConfig={setConfig} />
-      <form
-        className="max-w-md mx-auto my-20 space-y-10"
-      >
-        <div className="border-gray-700 border-2 p-4  rounded-lg my-5">
-          <span className="text-gray-400 font-medium text-center">
+    <div className=" text-neutral-700 flex flex-col  w-10/12 mx-auto">
+      <UseImage config={config} url={datos} setConfig={setConfig} typeImg="imgEvent" />
+      <form className="w-8/12 mx-auto  bg-neutral-700 my-5 flex flex-col items-center justify-around py-10  rounded-lg text-gray-200 gap-2">
+        <div className="border-gray-200 border-2 p-4 w-8/12 mx-auto items-center text-center rounded my-5">
+          <span className="text-gray-200 font-medium text-lg text-center">
             Seleccion de colores
           </span>
-          <div className="flex w-full items-center justify-around">
+          <div className="flex w-full items-center justify-center gap-5">
             <label htmlFor="color1" className="rounded-lg overflow-hidden">
               <input
                 value={config?.color1}
@@ -41,7 +39,7 @@ export default function ConfigConfiguracionGaleria({handleChange,handleCkeck,han
               />
             </label>
           </div>
-          <div className="w-full mx-auto text-gray-700 flex flex-col items-center mt-5 ">
+          {/* <div className="w-full mx-auto text-gray-700 flex flex-col items-center mt-5 ">
             <div className="relative inline-block w-10 mr-2 align-middle  select-none">
               <input
               value={config?.dark}
@@ -59,9 +57,9 @@ export default function ConfigConfiguracionGaleria({handleChange,handleCkeck,han
             <span className="text-gray-400 font-medium text-center">
               Modo Oscuro
             </span>
-          </div>
+          </div> */}
         </div>
-        <div>
+        <div className='w-8/12'>
           <label htmlFor="nombreEvento" className="sr-only">
             Nombre Evento
           </label>
@@ -72,12 +70,12 @@ export default function ConfigConfiguracionGaleria({handleChange,handleCkeck,han
               name="nombreEvento"
               onChange={handleChange}
               type="text"
-              className="w-full p-4 pr-12 text-sm border-gray-700 rounded-lg font-medium shadow-sm"
+              className="w-full p-4 pr-12 text-sm  text-gray-800 border-gray-700 rounded-lg font-medium shadow-sm"
               placeholder="Nombre Evento"
             />
           </div>
         </div>
-        <div>
+        <div className='w-8/12'>
           <label htmlFor="rutaEvento" className="sr-only">
             Ruta a la carpeta de la Galeria
           </label>
@@ -88,18 +86,18 @@ export default function ConfigConfiguracionGaleria({handleChange,handleCkeck,han
               name="rutaEvento"
               onChange={handleChange}
               type="text"
-              className="w-full p-4 pr-12 text-sm border-gray-700 rounded-lg font-medium shadow-sm"
+              className="w-full p-4 pr-12  text-gray-800  text-sm border-gray-700 rounded-lg font-medium shadow-sm"
               placeholder="Ruta a la carpeta de la Galeria"
             />
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2 justify-between">
           <button
           onClick={guardarConfig}
             type="botton"
             name="galeria"
-            className="inline-block px-10 py-3 text-sm mx-auto font-medium text-white bg-blue-500 rounded-lg border-b-2 border-x-2 hover:bg-blue-500/80 duration-300 "
+            className="inline-block  px-10 py-3 text-sm mx-auto font-medium text-white bg-blue-800 rounded my-5 border-l-2 hover:bg-blue-500/80 duration-300 "
           >
             Galeria
           </button>
@@ -107,7 +105,7 @@ export default function ConfigConfiguracionGaleria({handleChange,handleCkeck,han
            onClick={guardarConfig}
           name="slider"
             type="botton"
-            className="inline-block px-10 py-3 text-sm mx-auto font-medium text-white bg-blue-500 rounded-lg border-b-2 border-x-2 hover:bg-blue-500/80 duration-300 "
+            className="inline-block  px-10 py-3 text-sm mx-auto font-medium text-white bg-blue-800 rounded my-5 border-l-2 hover:bg-blue-500/80 duration-300 "
           >
             Slider
           </button>
