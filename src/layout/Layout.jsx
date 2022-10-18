@@ -4,6 +4,7 @@ import { datos,  fetcConfig, fetchData } from "../hook/useFetch";
 import useItems from "../hook/useItems";
 import { Outlet } from "react-router-dom";
 export default function Layout() {
+  const [movil, setMovil] = useState(false)
   const { data: data, error, isLoading } = useQuery(["images"], fetchData);
   const { data: config } = useQuery(["config"], fetcConfig);
   const [items] = useItems(data);
@@ -21,6 +22,16 @@ export default function Layout() {
     };
     traerDatos();
   }, [config]);
+  
+useEffect(() => {
+  let navegador = navigator.userAgent;
+        if (navegador.match(/Android/i) || navegador.match(/webOS/i) || navegador.match(/iPhone/i) || navegador.match(/iPad/i) || navegador.match(/iPod/i) || navegador.match(/BlackBerry/i) || navegador.match(/Windows Phone/i)) {
+          setMovil(true);
+        } else {
+            setMovil(false)
+        }
+
+}, [])
 
   return (
     <div
@@ -29,7 +40,7 @@ export default function Layout() {
       } w-full relative mx-auto text-neutral-700 flex flex-col items-center justify-center`}
     >
      <Outlet 
-     context={[event,items,url]}
+     context={[event,items,url,movil]}
      />
     </div>
   );
