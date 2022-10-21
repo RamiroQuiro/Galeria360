@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { datos, fetcConfig, fetcTxt } from "../../hook/useFetch";
+// import { datos, fetcConfig, fetcTxt } from "../../hook/useFetch";
 import toast, { Toaster } from "react-hot-toast";
 import ModalLoading from "../../component/ModalLoading";
 import Footer from "../footer/Footer";
@@ -49,34 +49,34 @@ export default function Config() {
     setConfig({ ...config, [e.target.name]: e.target.value });
   };
 
-const guardarDatosEmpresa=(e)=>{
-e.preventDefault()
-fetcTxt(JSON.stringify(config)).then((data)=>{
-  console.log(data)
-  toast.success('Datos Guardados ')
-}).catch((err)=>{
-  console.log(err)
-  console.log(err.stack)
-})
-}
+// const guardarDatosEmpresa=(e)=>{
+// e.preventDefault()
+// fetcTxt(JSON.stringify(config)).then((data)=>{
+//   console.log(data)
+//   toast.success('Datos Guardados ')
+// }).catch((err)=>{
+//   console.log(err)
+//   console.log(err.stack)
+// })
+// }
 
-  const guardarConfig = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    localStorage.setItem("config", JSON.stringify(config));
-    fetcTxt(JSON.stringify(config))
-      .then((response) => {
-        setTimeout(() => {
-          setIsLoading(false);
-          if (e.target.name == "galeria") {
-            navigate("/galeria");
-          } else {
-            navigate("/slider");
-          }
-        }, 2000);
-      })
-      .catch((err) => console.log(err));
-  };
+  // const guardarConfig = (e) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   localStorage.setItem("config", JSON.stringify(config));
+  //   fetcTxt(JSON.stringify(config))
+  //     .then((response) => {
+  //       setTimeout(() => {
+  //         setIsLoading(false);
+  //         if (e.target.name == "galeria") {
+  //           navigate("/galeria");
+  //         } else {
+  //           navigate("/slider");
+  //         }
+  //       }, 2000);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   const handleFetchPexel=async(query)=>{
       const respuesta=await fecthImages(query,"square","small")
@@ -91,11 +91,8 @@ fetcTxt(JSON.stringify(config)).then((data)=>{
     handleChange:handleChange,
     handlePaletaColors:handlePaletaColors,
     handleCkeck:handleCkeck,
-    datos:datos,
     config:config,
-   guardarDatosEmpresa,
     setConfig:setConfig, 
-    guardarConfig,
     handleFetchPexel
   }
   return (
