@@ -1,8 +1,8 @@
 // import { hostname,IPv4 } from "../../../ServerGaleria360/HostName.json";
 
 export const datos={
-  hostname,
-  IPv4
+  hostname:"",
+  IPv4:"192.168.0.1"
 }
 
 
