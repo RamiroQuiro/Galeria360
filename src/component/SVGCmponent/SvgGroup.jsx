@@ -13,7 +13,7 @@ export default function SvgGroup({url,imgEvent,handleMutedVideo,muted}) {
     })
   }
   const handleDownload =()=>{
-    navigate(url)
+    navigate("//"+url)
   }
 
 const handlePerfil=()=>{

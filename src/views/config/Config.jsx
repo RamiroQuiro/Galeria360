@@ -7,6 +7,7 @@ import Footer from "../footer/Footer";
 import ConfigConfiguracionGaleria from "./ConfigConfiguracionGaleria";
 import ConfigConfiguracionEmpresa from "./ConfigConfiguracionEmpresa";
 import NavBarConfigracion from "./NavBarConfigracion";
+import { fecthImages } from "../../hook/usePexelConection";
 
 export default function Config() {
   const navigate = useNavigate();
@@ -47,7 +48,10 @@ e.preventDefault()
 fetcTxt(JSON.stringify(config)).then((data)=>{
   console.log(data)
   toast.success('Datos Guardados ')
-}).catch((err)=>{console.log(err)})
+}).catch((err)=>{
+  console.log(err)
+  console.log(err.stack)
+})
 }
 
   const guardarConfig = (e) => {
@@ -68,7 +72,10 @@ fetcTxt(JSON.stringify(config)).then((data)=>{
       .catch((err) => console.log(err));
   };
 
-
+  const handleFetchPexel=async(query,format)=>{
+      const respuesta=await fecthImages(query,format,"small")
+      
+  }
   const contextOutlet={
     handleChange:handleChange,
     handlePaletaColors:handlePaletaColors,
@@ -78,6 +85,7 @@ fetcTxt(JSON.stringify(config)).then((data)=>{
    guardarDatosEmpresa,
     setConfig:setConfig, 
     guardarConfig,
+    handleFetchPexel
   }
   return (
     <div className="w-full overflow-x-hidden pt-5 text-gray-200 mx-auto bg-neutral-900">
@@ -87,7 +95,8 @@ fetcTxt(JSON.stringify(config)).then((data)=>{
       <NavBarConfigracion/>
 
       <Outlet context={contextOutlet}/>
-     
+
+ 
       <Footer />
     </div>
   );

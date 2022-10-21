@@ -3,8 +3,14 @@ import { useQuery } from "react-query";
 import { datos,  fetcConfig, fetchData } from "../hook/useFetch";
 import useItems from "../hook/useItems";
 import { Outlet } from "react-router-dom";
+
+
+
+
+
 export default function Layout() {
   const [movil, setMovil] = useState(false)
+  const [itemsPexel, setItemsPexel] = useState(null)
   const { data: data, error, isLoading } = useQuery(["images"], fetchData);
   const { data: config } = useQuery(["config"], fetcConfig);
   const [items] = useItems(data);
@@ -12,6 +18,8 @@ export default function Layout() {
 
   const [event, setEvent] = useState(null);
 
+
+  
   useEffect(() => {
     const url=async()=>{
       setUrl(datos) 
@@ -31,14 +39,16 @@ useEffect(() => {
             setMovil(false)
         }
 
+const iterarPexel=()=>{
+  const local=localStorage.getItem('fetchPEXEL')
+  setItemsPexel(JSON.parse(local))
+}
+iterarPexel()
+
 }, [])
 
   return (
-    <div
-      className={`${
-        config?.dark ? "bg-[#1C2128]" : "bg-sky-100 "
-      } w-full relative mx-auto text-neutral-700 flex flex-col items-center justify-center`}
-    >
+    <div className="bg-neutral-900  w-full relative mx-auto text-neutral-700 flex flex-col items-center justify-center">
      <Outlet 
      context={[event,items,url,movil]}
      />

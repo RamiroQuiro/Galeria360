@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import ContenedoresVides from "../../component/ContenedoresVides";
 
 export default function Galeria({ items, url }) {
+  const [pexel, setPexel] = useState(false)
+
 
 
   return (
@@ -10,7 +12,8 @@ export default function Galeria({ items, url }) {
         <ContenedoresVides
           url={url}
           i={i}
-          src={item.src}
+          pexel={pexel}
+          src={!pexel?item.src:item.link}
           key={i}
           slider={false}
           // setIndex={}

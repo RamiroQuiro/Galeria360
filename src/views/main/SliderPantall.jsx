@@ -7,6 +7,7 @@ import ImgEvent from "../../component/ImgEvent";
 
 export default function SliderPantall() {
   const [index, setIndex] = useState(0);
+  const [pexel, setPexel] = useState(false)
   const [event, items, url, movil] = useOutletContext();
 
   useEffect(() => {
@@ -15,7 +16,6 @@ export default function SliderPantall() {
     }
   }, [index]);
 
-  console.log(movil)
 
   const Render = () => {
     return (
@@ -27,7 +27,8 @@ export default function SliderPantall() {
           <ContenedoresVides
             url={url}
             i={i}
-            src={item.src}
+            pexel={pexel}
+            src={!pexel?item.src:item.link}
             key={i}
             imgEvent={event?.imgEvent}
             imgEmpresa={event?.imgEmpresa}

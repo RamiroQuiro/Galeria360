@@ -4,6 +4,7 @@ import SvgGroup from "./SVGCmponent/SvgGroup";
 
 export default function ContenedoresVides({
   src,
+  pexel,
   setIndex,
   i,
   slider,
@@ -85,6 +86,7 @@ export default function ContenedoresVides({
   const handleMutedVideo = () => {
     setMutedVideo(!mutedVideo);
   };
+  console.log(pexel)
 
   return (
     <div
@@ -115,11 +117,12 @@ export default function ContenedoresVides({
           muted={mutedVideo}
           className={`active:cursor-grabbing hover:scale-110 hover:-translate-y-2  cursor-grab object-cover h-full w-full hover:z-40 duration-500`}
         >
-          <source src={`http://${url?.IPv4}:4000/${src}`} type="video/mp4" />
+          
+          <source src={!pexel?`http://${url?.IPv4}:4000/${src}`:src} type="video/mp4" />
         </video>
       ) : (
         <a
-          href={`http://${url?.IPv4}:4000/${src}`}
+          href={!pexel? `http://${url?.IPv4}:4000/${src}`:src}
           download={true}
           target="_blank"
         >
@@ -130,7 +133,7 @@ export default function ContenedoresVides({
             muted
             className="hover:scale-110 hover:-translate-y-2  object-cover h-full w-full hover:z-40 duration-500"
           >
-            <source src={`http://${url?.IPv4}:4000/${src}`} type="video/mp4" />
+            <source  src={!pexel?`http://${url?.IPv4}:4000/${src}`:src} type="video/mp4" />
           </video>
         </a>
       )}

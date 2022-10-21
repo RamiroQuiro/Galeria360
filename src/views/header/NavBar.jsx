@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export default function ({event}) {
-console.log(event)
     
   return (
     <nav className='w-full z-50 mx-auto uppercase md:h-2 md:hover:h-10 group duration-300 overflow-hidden fixed  top-0 left-0 md:px-20 bg-gray-50/70 backdrop-blur-sm border-b flex flex-row  justify-around items-center'>

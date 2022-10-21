@@ -75,12 +75,12 @@ export default function ConfigConfiguracionEmpresa() {
             <div className="">
               <input
                 required
-                value={config?.Instagram}
+                value={config?.instagram}
                 onChange={handleChange}
                 name="instagram"
                 type="text"
                 className=" w-full p-2 pr-12 text-sm text-gray-700  border-gray-700 rounded font-medium "
-                placeholder="Facebook"
+                placeholder="Instagram"
               />
             </div>
           </div>
