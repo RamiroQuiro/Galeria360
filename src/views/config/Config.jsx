@@ -4,6 +4,7 @@ import { datos, fetcConfig, fetcTxt } from "../../hook/useFetch";
 import toast, { Toaster } from "react-hot-toast";
 import ModalLoading from "../../component/ModalLoading";
 import Footer from "../footer/Footer";
+import imgPerfil from "../../assets/doritologo.png"
 import ConfigConfiguracionGaleria from "./ConfigConfiguracionGaleria";
 import ConfigConfiguracionEmpresa from "./ConfigConfiguracionEmpresa";
 import NavBarConfigracion from "./NavBarConfigracion";
@@ -13,13 +14,18 @@ export default function Config() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [config, setConfig] = useState({
-    nombreEvento: "",
-    rutaEvento: "",
+    nombreEvento: "RamaCode",
+    rutaEvento: "www.ramiroquiroga.vercel.appp",
     color1: "#E5D3CF",
     color2: "#E3BCB7",
     dark: false,
-    imgEvent: "",
-    nombreEmpresa:"",
+    imgEvent: imgPerfil,
+    nombreEmpresa:"RamaCode",
+    descripcion:"Servicios Informaticos, Paginas y Sistemas Web",
+    direccion:"ramiroquiroga.vercel.app/",
+    facebook:"ramirochangomoreno",
+    instagram:"ramirochangomoreno",
+    celular:"3856771992"
 
   });
 
@@ -72,8 +78,13 @@ fetcTxt(JSON.stringify(config)).then((data)=>{
       .catch((err) => console.log(err));
   };
 
-  const handleFetchPexel=async(query,format)=>{
-      const respuesta=await fecthImages(query,format,"small")
+  const handleFetchPexel=async(query)=>{
+      const respuesta=await fecthImages(query,"square","small")
+      if (respuesta) {
+        navigate('/galeria')
+      }else{
+        toast.error('Tema no encontrado, pueba en inglish')
+      }
       
   }
   const contextOutlet={

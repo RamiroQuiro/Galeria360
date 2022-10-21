@@ -48,9 +48,9 @@ iterarPexel()
 }, [])
 
   return (
-    <div className="bg-neutral-900  w-full relative mx-auto text-neutral-700 flex flex-col items-center justify-center">
+    <div className="bg-neutral-900 min-w-full w-full relative mx-auto text-neutral-700 flex flex-col items-center justify-center">
      <Outlet 
-     context={[event,items,url,movil]}
+     context={[event,itemsPexel,url,movil]}
      />
     </div>
   );

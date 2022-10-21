@@ -1,10 +1,26 @@
-import React from "react";
+import {useState} from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import facebookSVG from "../../../assets/facebook-svgrepo-com.svg";
 import instagramSVG from "../../../assets/instagram-svgrepo-com.svg";
 import RedesSocialesContacto from "./RedesSocialesContacto";
-
+import imgPerfil from "../../../assets/doritologo.png";
 export default function Perfil() {
+
+  const [config, setConfig] = useState({
+    nombreEvento: "RamaCode",
+    rutaEvento: "www.ramiroquiroga.vercel.appp",
+    color1: "#E5D3CF",
+    color2: "#E3BCB7",
+    dark: false,
+    imgEvent: imgPerfil,
+    nombreEmpresa:"RamaCode",
+    descripcion:"Servicios Informaticos, Paginas y Sistemas Web",
+    direccion:"ramiroquiroga.vercel.app",
+    facebook:"ramirochangomoreno",
+    instagram:"ramirochangomoreno",
+    celular:"3856771992"
+
+  });
   const [event, items, url] = useOutletContext();
   const navigate = useNavigate();
   const handleClose = () => {
@@ -46,26 +62,26 @@ export default function Perfil() {
           <div className="flex  rounded-b-3xl bg-gray-100 gap-5 flex-col items-center py-7">
             <img
               className="h-28 w-28 object-cover rounded-full"
-              src={`http://${url?.IPv4}:4000/upload/${event?.imgEmpresa}`}
+              src={imgPerfil}
               alt="User"
             />
             <p className="text-x1 font-bold text-center upeercase">
-              {event?.nombreEmpresa}
+              {config?.nombreEmpresa}
             </p>
             <p className="text-x1 font-bold text-center ">
-              {event?.descripcion}
+              {config?.descripcion}
             </p>
           </div>
           <div className="flex px-7 py-2  items-center justify-around  gap-4  ">
             <div className="col-span-1 flex flex-col items-center ">
               <span className="text-2xl font-bold ">
-                {event?.celular}
+                {config?.celular}
               </span>
               <span className="text-lg font-medium 0">Celular</span>
             </div>
             <div className="col-span-1 px-3 flex flex-col items-center ">
-              <span className="text-2xl font-bold ">
-                {event?.direccion}
+              <span className="text-xl font-bold ">
+                {config?.direccion}
               </span>
               <span className="text-lg font-medium">Dirección</span>
             </div>
@@ -74,16 +90,16 @@ export default function Perfil() {
 
         <div className="w-10/12 font-medium flex-col   md:flex-row flex items-center justify-around gap-y-5">
          {
-         event?.facebook.length>0&&
+         config?.facebook.length>0&&
          <RedesSocialesContacto
-          event={event?.facebook}
+          event={config?.facebook}
           image={facebookSVG}
           redSocial={"facebook"}
           />}
            {
-         event?.instagram.length>0&&
+         config?.instagram.length>0&&
           <RedesSocialesContacto
-          event={event?.instagram}
+          event={config?.instagram}
           image={instagramSVG}
           redSocial={"instagram"}
           />
@@ -91,7 +107,7 @@ export default function Perfil() {
         </div>
 
         <div className="flex mx-auto mt-3 w-100 ">
-          <a href={`https://wa.me/${event?.celular}`} target="_blank">
+          <a href={`https://wa.me/${config?.celular}`} target="_blank">
             {" "}
             <button
             className="p-2 shadow-lg tr-300 w-100 font-medium  bg-green-500 rounded-md hover:bg-green-600 text-gray-50">
