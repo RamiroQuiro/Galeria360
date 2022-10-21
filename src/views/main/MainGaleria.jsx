@@ -9,7 +9,7 @@ const [event,items,url,movil]=useOutletContext()
 
 
   return (
-    <div className='flex flex-col items-stretch justify-between'>
+    <div className='flex flex-col w-full min-h-screen items-stretch justify-between'>
      <Headerr event={event} url={url} movil={movil} />
       <Main items={items} url={url}  />
       <Footer />

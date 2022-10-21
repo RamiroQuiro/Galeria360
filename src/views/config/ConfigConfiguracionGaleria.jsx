@@ -27,8 +27,8 @@ const handleChangeState=(e)=>{
 
 const mandarPExel=(e)=>{
   e.preventDefault()
-  handleFetchPexel(pexel.theme,"square")
-  navigate('/galeria')
+  handleFetchPexel(pexel.theme)
+  
 }
 
   
@@ -50,6 +50,7 @@ const mandarPExel=(e)=>{
             <div className="flex w-full items-center justify-center gap-5">
               <label htmlFor="color1" className="rounded-lg overflow-hidden">
                 <input
+                disabled
                   value={config?.color1}
                   name="color1"
                   type="color"
@@ -59,6 +60,7 @@ const mandarPExel=(e)=>{
               </label>
               <label htmlFor="color2">
                 <input
+                disabled
                   value={config?.color2}
                   name="color2"
                   type="color"
@@ -93,7 +95,7 @@ const mandarPExel=(e)=>{
             </label>
             <div className="">
               <input
-                required
+                disabled
                 value={config?.nombreEvento}
                 name="nombreEvento"
                 onChange={handleChange}
@@ -109,6 +111,7 @@ const mandarPExel=(e)=>{
             </label>
             <div className="">
               <input
+              disabled
                 required
                 value={config?.rutaEvento}
                 name="rutaEvento"
@@ -130,6 +133,7 @@ const mandarPExel=(e)=>{
               Galeria
             </button>
             <button
+            disabled
               onClick={guardarConfig}
               name="slider"
               type="botton"
@@ -138,7 +142,7 @@ const mandarPExel=(e)=>{
               Slider
             </button>
           </div>
-          {/* <form className="items-center justify-center flex flex-col">
+          <form className="items-center justify-center flex flex-col">
             <div className="text-gray-800 mx-auto">
               <label
                 htmlFor="pexelFetch"
@@ -171,7 +175,7 @@ const mandarPExel=(e)=>{
               Ir a Galería
             </button>
           </form>
-          <span>Videos Aleatorios Utilizados por la API de PEXELS</span> */}
+          <span>Videos Aleatorios Utilizados por la API de PEXELS</span>
         </form>
       </div>
     </div>

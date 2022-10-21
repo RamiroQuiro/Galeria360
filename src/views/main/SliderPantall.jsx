@@ -2,12 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import ContenedoresVides from "../../component/ContenedoresVides";
-
+import imgPerfil from '../../assets/doritologo.png'
 import ImgEvent from "../../component/ImgEvent";
+import qrImage from "../../assets/frame.png";
 
 export default function SliderPantall() {
   const [index, setIndex] = useState(0);
-  const [pexel, setPexel] = useState(false)
+  const [pexel, setPexel] = useState(true)
   const [event, items, url, movil] = useOutletContext();
 
   useEffect(() => {
@@ -30,8 +31,8 @@ export default function SliderPantall() {
             pexel={pexel}
             src={!pexel?item.src:item.link}
             key={i}
-            imgEvent={event?.imgEvent}
-            imgEmpresa={event?.imgEmpresa}
+            imgEvent={imgPerfil}
+            imgEmpresa={imgPerfil}
             slider={true}
             current={index == i}
             setIndex={setIndex}
@@ -64,14 +65,16 @@ export default function SliderPantall() {
                 Scanea para la galeria
               </h2>
               <img
-                src={event?.qr}
+                // src={event?.qr}
+                src={qrImage}
                 alt=""
                 className=" object-cover h-5/6 rounded-lg"
               />
             </div>
             <div className="mx-auto flex flex-col items-center justify-center">
               <div className="rounded-full h-28 w-28 md:w-40 md:h-40  overflow-hidden  border-2 bg-purple-500">
-                <ImgEvent url={url} imgEvent={event?.imgEvent} />
+                {/* <ImgEvent url={url} imgEvent={event?.imgEvent} /> */}
+                <img src={imgPerfil} alt="logoPerfil" className="object-cover object-center w-full h-full hover:scale-110 duration-500" />
               </div>
             </div>
           </div>

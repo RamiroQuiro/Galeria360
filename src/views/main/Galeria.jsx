@@ -2,7 +2,7 @@ import { useEffect,useState } from "react";
 import ContenedoresVides from "../../component/ContenedoresVides";
 
 export default function Galeria({ items, url }) {
-  const [pexel, setPexel] = useState(false)
+  const [pexel, setPexel] = useState(true)
 
 
 

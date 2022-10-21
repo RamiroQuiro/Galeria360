@@ -20,7 +20,7 @@ export default function ConfigConfiguracionEmpresa() {
               <input
               value={config?.nombreEmpresa}
               onChange={handleChange}
-                required
+                disabled
                 name="nombreEmpresa"
                 type="text"
                 className=" w-full p-2 pr-12 text-sm text-gray-700  border-gray-700 rounded font-medium "
@@ -33,8 +33,9 @@ export default function ConfigConfiguracionEmpresa() {
               Pequeña descripcion
             </label>
            <textarea value={config?.descripcion}
+           disabled
                 onChange={handleChange}
-                name="descripcion" id="" cols="30" rows="2"   className=" w-full p-2 pr-12 text-sm text-gray-700  border-gray-700 rounded font-medium "></textarea>
+                name="descripcion" id="" cols="30" rows="2"   className=" w-full p-2 text-right pr-12 text-sm text-gray-700  border-gray-700 rounded font-medium "></textarea>
           </div>
           <div className="flex w-4/5 items-center justify-between ">
             <label htmlFor="direccion" className=" font-medium">
@@ -42,7 +43,7 @@ export default function ConfigConfiguracionEmpresa() {
             </label>
             <div className="">
               <input
-                required
+                disabled
                 value={config?.direccion}
                 onChange={handleChange}
                 name="direccion"
@@ -58,7 +59,7 @@ export default function ConfigConfiguracionEmpresa() {
             </label>
             <div className="">
               <input
-                required
+                disabled
                 value={config?.facebook}
                 onChange={handleChange}
                 name="facebook"
@@ -74,7 +75,7 @@ export default function ConfigConfiguracionEmpresa() {
             </label>
             <div className="">
               <input
-                required
+                disabled
                 value={config?.instagram}
                 onChange={handleChange}
                 name="instagram"
@@ -90,7 +91,7 @@ export default function ConfigConfiguracionEmpresa() {
             </label>
             <div className="">
               <input
-                required
+                disabled
                 value={config?.celular}
                 onChange={handleChange}
                 name="celular"

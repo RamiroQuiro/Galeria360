@@ -66,7 +66,8 @@ export default function UseImage({config,setConfig,url,typeImg}) {
       !preview ? (
         <div className="w-40 h-40 border-2 rounded-full overflow-hidden bg-gray-500">
          <img
-             src={`http://${url?.IPv4}:4000/upload/${config?.[typeImg]}`}
+            //  src={`http://${url?.IPv4}:4000/upload/${config?.[typeImg]}`}
+            src={config.imgEvent}
              alt="Perfil "
              className=" object-cover w-full h-auto obect-center"
            />

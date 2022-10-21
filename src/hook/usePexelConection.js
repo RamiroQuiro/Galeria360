@@ -18,7 +18,11 @@ const option={
         Authorization:API_Key,
     },
 }
-const data= fetchFrom(url,option).then((data)=>data)
+const data= fetchFrom(url,option).then((data)=> {
+    if(data.length==0){
+        return false
+    }else return true    
+})
 return data
 }
 
