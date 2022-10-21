@@ -1,4 +1,4 @@
-import { hostname,IPv4 } from "../../../ServerGaleria360/HostName.json";
+// import { hostname,IPv4 } from "../../../ServerGaleria360/HostName.json";
 
 export const datos={
   hostname,
