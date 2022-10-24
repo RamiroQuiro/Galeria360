@@ -92,12 +92,12 @@ export default function ContenedoresVides({
     <div
     
     onMouseUp={handleMouseUp}
-    // onTouchEnd={handleMouseUp}
+    onTouchEnd={handleMouseUp}
     
     onMouseMove={handleMoveMouse}
-    // onTouchMove={handleMoveMouse}
+    onTouchMove={handleMoveMouse}
     onMouseDown={handleMouseDown}
-    // onTouchStart={handleMouseDown}
+    onTouchStart={handleMouseDown}
       className={`${className} relative flex-auto z-20 group  bg-neutral-900/70 backdrop-blur-sm  overflow-hidden`}
     >
       {!slider ? null : (
