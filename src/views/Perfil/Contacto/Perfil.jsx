@@ -31,7 +31,7 @@ export default function Perfil() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              s
+              
             >
               <path
                 stroke-linecap="round"
@@ -45,7 +45,7 @@ export default function Perfil() {
         <div className="bg-green-300 w-full shadow-lg pb-3 rounded-b-3xl">
           <div className="flex  rounded-b-3xl bg-gray-100 gap-5 flex-col items-center py-7">
             <img
-              className="h-28 w-28 object-cover rounded-full"
+              className="h-28 w-28 object-contain border-2 border-orange-600 bg-orange-900 rounded-full"
               src={`http://${url?.IPv4}:4000/upload/${event?.imgEmpresa}`}
               alt="User"
             />
@@ -74,14 +74,14 @@ export default function Perfil() {
 
         <div className="w-10/12 font-medium flex-col   md:flex-row flex items-center justify-around gap-y-5">
          {
-         event?.facebook.length>0&&
+         event?.facebook?.length>0&&
          <RedesSocialesContacto
           event={event?.facebook}
           image={facebookSVG}
           redSocial={"facebook"}
           />}
            {
-         event?.instagram.length>0&&
+         event?.instagram?.length>0&&
           <RedesSocialesContacto
           event={event?.instagram}
           image={instagramSVG}

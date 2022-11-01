@@ -18,9 +18,9 @@ function App() {
           </Route>
 
         <Route element={<Layout />}>
-          <Route path="/galeria" element={<MainGaleria />} />
-          <Route path="/slider" element={<SliderPantall />} />
-          <Route path="/perfil" element={<Perfil />} />
+          <Route path="galeria" element={<MainGaleria />} />
+          <Route path="slider" element={<SliderPantall />} />
+          <Route path="perfil" element={<Perfil />} />
         </Route>
       </Routes>
     </BrowserRouter>
