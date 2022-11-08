@@ -7,7 +7,7 @@ export default function Galeria({ items, url }) {
 
 
   return (
-    <div className="flex flex-wrap items-center w-full min-w-full justify-around my-10 gap-y-1 ">
+    <div className="flex flex-wrap flex-auto items-center w-full px-5 my-5 justify-around  gap-y-1 ">
       {items?.map((item, i) => (
         <ContenedoresVides
           url={url}
