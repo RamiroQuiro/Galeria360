@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export default function NavBarSlider() {
   return (
-    <nav className="md:mt-10 mx-2 flex md:block">
+    <nav className="md:mt-10 mx-2 flex items-center justify-around gap-x-4 md:block">
       <NavLink
         to={"/perfil"}
         className="hover:text-gray-800 hover:bg-gray-100 flex items-center py-1 px-2 my-2 transition-colors dark:hover:text-white  duration-200  text-gray-600 rounded-lg "

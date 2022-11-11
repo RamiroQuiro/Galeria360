@@ -12,15 +12,15 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<Config />} >
-        <Route path="/" index element={ <ConfigConfiguracionEmpresa/>} />
+        <Route path="/config"  element={ <ConfigConfiguracionEmpresa/>} />
         <Route path="/configuracionGaleria" element={ <ConfigConfiguracionGaleria/>} />
          
           </Route>
 
         <Route element={<Layout />}>
-          <Route path="galeria" element={<MainGaleria />} />
-          <Route path="slider" element={<SliderPantall />} />
-          <Route path="perfil" element={<Perfil />} />
+          <Route path="/" index element={<MainGaleria />} />
+          <Route path="/slider" element={<SliderPantall />}  />
+          <Route path="/perfil" element={<Perfil />} />
         </Route>
       </Routes>
     </BrowserRouter>

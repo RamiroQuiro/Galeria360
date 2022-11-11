@@ -20,7 +20,7 @@ export default function SliderPantall() {
     return (
       <div
         style={{ transform: `translateY(${-1 * index * 100}%)` }}
-        className={`h-full  mx-auto duration-500 `}
+        className={`h-full w-full  mx-auto duration-500 `}
       >
         {items?.map((item, i) => (
           <ContenedoresVides
@@ -54,8 +54,8 @@ export default function SliderPantall() {
         <div className="md:w-1/3 w-full h-full   bg-neutral-800">
           <div
             className={`${
-              !movil ? "h-[75%] " : "h-screen"
-            } bg-sky-900  overflow-hidden relative  `}
+              !movil ? "h-[75%] " : "h-full"
+            } bg-sky-900 w-full overflow-hidden relative  `}
           >
             <Render />
           </div>

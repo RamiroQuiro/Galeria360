@@ -20,9 +20,8 @@ const handlePerfil=()=>{
   navigate('/perfil')
 }
 const handleGaleria=()=>{
-  navigate('/galeria')
+  navigate('/')
 }
-console.log(imgEvent)
   return (
     <>
        <SVGCcomponentiktok2
@@ -38,7 +37,7 @@ console.log(imgEvent)
             />
         <SvgComponent
         handleGaleria={handleGaleria}
-        className="w-8/12 z-30  absolute  bottom-4 mx-auto left-20" />
+        className="w-8/12 z-30  absolute  bottom-4 mx-auto left-16" />
         </>
   )
 }

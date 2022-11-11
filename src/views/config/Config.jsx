@@ -63,7 +63,7 @@ fetcTxt(JSON.stringify(config)).then((data)=>{
         setTimeout(() => {
           setIsLoading(false);
           if (e.target.name == "galeria") {
-            navigate("/galeria");
+            navigate("/");
           } else {
             navigate("/slider");
           }

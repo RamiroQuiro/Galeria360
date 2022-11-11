@@ -22,6 +22,7 @@ export default function ContenedoresVides({
   const [codeQR, setCodeQR] = useState(null);
   const [mutedVideo, setMutedVideo] = useState(false);
 
+
   const hover = () => {
     videoRef.current.addEventListener("mouseenter", () => {
       videoRef.current.play();
@@ -86,7 +87,6 @@ export default function ContenedoresVides({
   const handleMutedVideo = () => {
     setMutedVideo(!mutedVideo);
   };
-  console.log(pexel)
 
   return (
     <div
