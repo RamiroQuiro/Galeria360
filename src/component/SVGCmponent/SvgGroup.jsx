@@ -2,6 +2,7 @@ import React from 'react'
 import SvgComponent from "./SVGcomponente";
 import SVGCcomponentiktok2 from "./SVGCcomponentiktok2";
 import { useState } from 'react';
+import galeria from '../../assets/galeriaimagenes.svg'
 import { useNavigate } from 'react-router-dom';
 
 export default function SvgGroup({url,imgEvent,handleMutedVideo,muted}) {
@@ -13,7 +14,11 @@ export default function SvgGroup({url,imgEvent,handleMutedVideo,muted}) {
     })
   }
   const handleDownload =()=>{
-    navigate("//"+url)
+
+    const link= document.createElement('a')
+    link.download="video360"
+    link.href="//"+url
+    link.click()
   }
 
 const handlePerfil=()=>{
@@ -35,9 +40,13 @@ const handleGaleria=()=>{
               muted={muted}
               handleMutedVideo={handleMutedVideo}
             />
-        <SvgComponent
-        handleGaleria={handleGaleria}
-        className="w-8/12 z-30  absolute  bottom-4 mx-auto left-16" />
-        </>
+      <div 
+      onClick={handleGaleria}
+      className=' z-50  h-10 absolute bottom-0 flex items-center bg-neutral-600/50 backdrop-blur-sm
+       cursor-pointer justify-center gap-2 py-2  w-full '>
+        <img src={galeria} alt="galeria" className='object-cover w-8 h-8'/>
+        <span className='font-bold text-gray-100'>Galeria</span>
+      </div>
+      </>
   )
 }

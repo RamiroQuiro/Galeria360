@@ -44,7 +44,7 @@ const SvgComponent = ({className,image,url,onClik,like,likes,handlePerfil,handle
     <g id="Capa_2" data-name="Capa 2">
       <g id="Capa_1-2" data-name="Capa 1">
       
-        <g onClick={handlePerfil} className='cursor-pointer hover:scale-105 origin-center duration-150'>
+        <g onClick={handlePerfil} className='cursor-pointer  origin-center duration-150'>
         <g
           style={{
             clipPath: "url(#clip-path)",
@@ -78,13 +78,7 @@ const SvgComponent = ({className,image,url,onClik,like,likes,handlePerfil,handle
         >
           {'250'}
         </text>
-        <path
-          className="cls-4"
-          d="M15.77 82.22c-4 0-7.19 2.5-7.19 5.58 0 2.44 2 4.5 4.82 5.26a2.74 2.74 0 0 1-1.63 2.28s3.54.41 5.17-2c3.41-.44 6-2.73 6-5.5.06-3.12-3.2-5.62-7.17-5.62Zm-4.17 6.57a1 1 0 1 1 1-1 1 1 0 0 1-1 1Zm4.17 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1Zm4.17 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1Z"
-        />
-        <text className="cls-7" transform="translate(12.96 101.43)">
-          {"20"}
-        </text>
+      
         <g onClick={handleDownload} className="cursor-pointer hover:scale-105 origin-center duration-150">
 
         <path
